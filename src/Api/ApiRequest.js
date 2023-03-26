@@ -44,6 +44,16 @@ export async function UpdateRequest(id,updatePro) {
     }
 }
 
+export async function DetailsRequest(id) {
+    let URL = `${baseUrl}/ReadProductByID/${id}`;
+    let result = await axios.get(URL);
+    if (result.status===200 && result.data['status']==='success') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 export async function DemoUsers(){
     let URL = `/allUsers`;
     let result = await axios.get(URL);
