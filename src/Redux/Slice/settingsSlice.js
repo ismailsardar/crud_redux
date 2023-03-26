@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const settingsSlice = createSlice({
-    name:"setting",
+    name:"settings",
     initialState:{
         loader:'d-none'
     },

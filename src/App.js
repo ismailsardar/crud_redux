@@ -3,6 +3,7 @@ import CreateUpdateForm from "./Components/CreateUpdateForm";
 import ProductList from "./Components/ProductList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavMenu from "./Components/NavMenu";
+import FullScreenLoader from "./Components/FullScreen-Loader";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/create" element={<CreateUpdateForm />} />
         </Routes>
       </BrowserRouter>
+      <FullScreenLoader/>
     </>
   );
 };

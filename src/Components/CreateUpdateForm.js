@@ -1,16 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { CreatedProducts } from "../Api/ApiRequest";
 import { onChangeProductInput } from "../Redux/Slice/ProductSlice";
 import store from "../Redux/Store/store";
 
 const CreateUpdateForm = () => {
+  let navigate = useNavigate()
 
     let createList = useSelector((state)=> state.product.FormValue);
     
     const SaveData = async ()=>{
         // console.log(createList)
         await CreatedProducts(createList);
+        navigate('/');
     }
   return (
     <>
