@@ -1,11 +1,11 @@
 import React from "react";
-import NavMenu from "../Components/NavMenu";
+// import NavMenu from "../Components/NavMenu";
 import ProductList from "../Components/ProductList";
 
 const ReadPage = () => {
   return (
     <>
-      <NavMenu />
+      {/* <NavMenu /> */}
       <ProductList />
     </>
   );

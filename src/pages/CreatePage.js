@@ -1,11 +1,11 @@
 import React from 'react'
 import CreateUpdateForm from '../Components/CreateUpdateForm'
-import NavMenu from '../Components/NavMenu'
+// import NavMenu from '../Components/NavMenu'
 
 const CreatePage = () => {
   return (
     <>
-        <NavMenu/>
+        {/* <NavMenu/> */}
         <CreateUpdateForm/>
     </>
   )
