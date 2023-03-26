@@ -11,6 +11,10 @@ const ProductList = () => {
 
   let productList = useSelector((state) => state.product.List);
   // console.log(productList)
+
+  const deleteItem = async (id)=>{
+    alert(id)
+  }
   return (
     <>
       <div className="container">
@@ -24,6 +28,8 @@ const ProductList = () => {
                   <th>Qty</th>
                   <th>UnitPrice</th>
                   <th>TotalPrice</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,6 +40,9 @@ const ProductList = () => {
                     <td>{item["Qty"]}</td>
                     <td>{item["UnitPrice"]}</td>
                     <td>{item["TotalPrice"]}</td>
+                    <td><button className="btn btn-warning btn-sm" onClick={()=>deleteItem(item['_id'])}>Edit</button></td>
+                    <td><button className="btn btn-danger btn-sm" onClick={()=>deleteItem(item['_id'])}>Delete</button></td>
+              
                   </tr>
                 ))}
               </tbody>
