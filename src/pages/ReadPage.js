@@ -1,12 +1,14 @@
-import React from 'react'
-import ProductList from '../Components/ProductList'
+import React from "react";
+import NavMenu from "../Components/NavMenu";
+import ProductList from "../Components/ProductList";
 
 const ReadPage = () => {
   return (
     <>
-        <ProductList/>
+      <NavMenu />
+      <ProductList />
     </>
-  )
-}
+  );
+};
 
-export default ReadPage
+export default ReadPage;
