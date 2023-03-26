@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { ReadProducts } from "../Api/ApiRequest";
+import { DeleteProducts, ReadProducts } from "../Api/ApiRequest";
 
 const ProductList = () => {
   useEffect(() => {
@@ -14,6 +14,13 @@ const ProductList = () => {
 
   const deleteItem = async (id) => {
     // alert(id);
+    try {
+      let result = await DeleteProducts(id);
+      // console.log(result)
+      await ReadProducts();
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -43,7 +50,7 @@ const ProductList = () => {
                     <td>
                       <button
                         className="btn btn-warning btn-sm"
-                        onClick={() => deleteItem(item["_id"])}
+                        // onClick={}
                       >
                         Edit
                       </button>

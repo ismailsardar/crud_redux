@@ -25,8 +25,8 @@ export async function CreatedProducts(createPro) {
 }
 
 export async function DeleteProducts(id) {
-    let URL = `${baseUrl}//DeleteProduct/${id}`;
-    let result = await axios.post(URL);
+    let URL = `${baseUrl}/DeleteProduct/${id}`;
+    let result = await axios.get(URL);
     if (result.status===200 && result.data['status']==='success') {
         return true;
     } else {
