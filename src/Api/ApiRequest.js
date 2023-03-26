@@ -34,6 +34,16 @@ export async function DeleteProducts(id) {
     }
 }
 
+export async function UpdateRequest(id,updatePro) {
+    let URL = `${baseUrl}/UpdateProduct/${id}`;
+    let result = await axios.post(URL,updatePro);
+    if (result.status===200 && result.data['status']==='success') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 export async function DemoUsers(){
     let URL = `/allUsers`;
     let result = await axios.get(URL);
