@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { DeleteProducts, ReadProducts } from "../Api/ApiRequest";
+import { NavLink } from "react-router-dom";
 
 const ProductList = () => {
   useEffect(() => {
@@ -48,12 +49,12 @@ const ProductList = () => {
                     <td>{item["UnitPrice"]}</td>
                     <td>{item["TotalPrice"]}</td>
                     <td>
-                      <button
+                      <NavLink
                         className="btn btn-warning btn-sm"
-                        // onClick={}
+                        to={"/create?id=" + item["_id"]}
                       >
                         Edit
-                      </button>
+                      </NavLink>
                     </td>
                     <td>
                       <button

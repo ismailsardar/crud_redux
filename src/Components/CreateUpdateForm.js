@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { CreatedProducts } from "../Api/ApiRequest";
-import { onChangeProductInput } from "../Redux/Slice/ProductSlice";
+import { CreatedProducts, DetailsRequest } from "../Api/ApiRequest";
+import { ResetProductFormValue, onChangeProductInput } from "../Redux/Slice/ProductSlice";
 import store from "../Redux/Store/store";
 
 const CreateUpdateForm = () => {
   let navigate = useNavigate()
+  let [ObjectID,SetObjectID]=useState(null);
 
     let createList = useSelector((state)=> state.product.FormValue);
     
+    useEffect(() => {
+      let QueryStrings = new URLSearchParams(window.location.search);
+      let id = QueryStrings.get('id');
+      if (id!==null) {
+        SetObjectID(id);
+        (async()=>{
+          await DetailsRequest(id);
+        })()
+      }else{
+        store.dispatch(ResetProductFormValue())
+      }
+    }, []);
+    
+    
     const SaveData = async ()=>{
-        // console.log(createList)
-        await CreatedProducts(createList);
+      
+        await CreatedProducts(createList,ObjectID);
         navigate('/');
+      
     }
   return (
     <>
@@ -22,6 +38,7 @@ const CreateUpdateForm = () => {
           <div className="col-md-3">
             <label>Image :</label>
             <input
+            value={createList['Img']}
               type="text"
               className="form-control form-control-sm"
               onChange={(e) =>
@@ -34,6 +51,7 @@ const CreateUpdateForm = () => {
           <div className="col-md-3">
             <label>ProductCode :</label>
             <input
+            value={createList['ProductCode']}
               type="text"
               className="form-control form-control-sm"
               onChange={(e) =>
@@ -46,6 +64,7 @@ const CreateUpdateForm = () => {
           <div className="col-md-3">
             <label>ProductName :</label>
             <input
+            value={createList['ProductName']}
               type="text"
               className="form-control form-control-sm"
               onChange={(e) =>
@@ -58,6 +77,7 @@ const CreateUpdateForm = () => {
           <div className="col-md-3">
             <label>Qty :</label>
             <input
+            value={createList['Qty']}
               type="text"
               className="form-control form-control-sm"
               onChange={(e) =>
@@ -70,6 +90,7 @@ const CreateUpdateForm = () => {
           <div className="col-md-3">
             <label>TotalPrice :</label>
             <input
+            value={createList['TotalPrice']}
               type="text"
               className="form-control form-control-sm"
               onChange={(e) =>
@@ -82,6 +103,7 @@ const CreateUpdateForm = () => {
           <div className="col-md-3">
             <label>UnitPrice :</label>
             <input
+            value={createList['UnitPrice']}
               type="text"
               className="form-control form-control-sm"
               onChange={(e) =>

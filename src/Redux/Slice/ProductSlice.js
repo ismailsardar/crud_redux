@@ -20,10 +20,13 @@ const ProductSlice = createSlice({
         },
         onChangeProductInput:(state,action)=>{
             state.FormValue[`${action.payload.Name}`] = action.payload.Value;
+        },
+        ResetProductFormValue:(state,action)=>{
+            Object.keys(state.FormValue).forEach((i) => state.FormValue[i] = "");
         }
     }
 });
 
 
-export const {setProductList,onChangeProductInput} = ProductSlice.actions;
+export const {setProductList,onChangeProductInput,ResetProductFormValue} = ProductSlice.actions;
 export default ProductSlice.reducer;
