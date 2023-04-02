@@ -16,7 +16,7 @@ const ProductList = () => {
   const deleteItem = async (id) => {
     // alert(id);
     try {
-      let result = await DeleteProducts(id);
+      await DeleteProducts(id);
       // console.log(result)
       await ReadProducts();
     } catch (error) {
